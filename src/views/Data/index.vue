@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <router-view />
+    <div>data.index</div>
 </template>
 
-<style></style>
+<style lang="scss"></style>

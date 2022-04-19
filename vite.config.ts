@@ -1,4 +1,4 @@
-import { ConfigEnv } from 'vite'
+import { ConfigEnv, AliasOptions } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -6,9 +6,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import * as path from 'path'
 
 export default ({ command, mode }: ConfigEnv) => {
-    const isBuild = command == 'build'
-    const root = process.cwd()
-
     return {
         plugins: [
             vue(),
@@ -30,8 +27,11 @@ export default ({ command, mode }: ConfigEnv) => {
             })
         ],
         resolve: {
-            '@': path.resolve(__dirname, '../src'),
-            '#': path.resolve(__dirname, '../types')
+            alias: {
+                '@': path.resolve(__dirname, './src'),
+                '#': path.resolve(__dirname, './types')
+            }
         }
     }
 }
+
